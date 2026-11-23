@@ -562,8 +562,6 @@ Keep your response professional and concise.
                     else:
                         st.warning("No text response was generated.")
 
-        except Exception:
-            st.error(
-                "AI request failed. Check API access, "
-                "model availability, and usage limits."
-            )
+                except Exception as e:
+            st.error(f"AI request failed: {type(e).__name__}")
+            st.write("Error code:", getattr(e, "code", "Unknown"))
